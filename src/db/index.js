@@ -3,8 +3,6 @@ import {DB_NAME}  from "../constants.js";
 
 
 
-
-
 const connectMongoDB = async () => {
 
     try { 

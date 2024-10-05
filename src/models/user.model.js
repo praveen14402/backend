@@ -2,7 +2,7 @@ import mongoose ,{ Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";  
 
-const userScheme = new Scheme(
+const userScheme = new Schema(
     {
       username:{
         type: String,
@@ -60,7 +60,7 @@ userScheme.pre("save", async function(next){
         if(!this.isModified("password")){
             next();
         }
-        this.password =  bcrypt.hash(this.password, 10);
+        this.password =  await bcrypt.hash(this.password, 10);
 })
  //password verification 
 userScheme.methods.isPasswordCorrect = async function(password){
