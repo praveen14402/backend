@@ -24,8 +24,9 @@ const uploadOnCloudinar = async (localFilePath) => {
         
         })
         // file uploaded successfully
-        console.log("file uploaded successfully", response.url);
-
+        // console.log("file uploaded successfully", response.url);
+        fs.unlinkSync(localFilePath);
+        // remove the locally saved temporary file as the upload operation got successful
         return response;
     }
     catch(error){
